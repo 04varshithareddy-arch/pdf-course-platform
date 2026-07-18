@@ -1,4 +1,4 @@
-﻿import { supabase } from "@/lib/supabase";
+import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
 import LessonItem from "./LessonItem";
@@ -66,16 +66,16 @@ export default async function CoursePage({ params }) {
   return (
     <main className="min-h-screen max-w-3xl mx-auto p-8">
       <Link href="/" className="text-blue-600 hover:underline text-sm">
-        ← Back to home
+        ? Back to home
       </Link>
 
       <h1 className="text-3xl font-bold mt-4 mb-2">{course.title}</h1>
       <p className="text-gray-600 mb-4">{course.description}</p>
 
       <div className="flex gap-4 text-sm text-gray-500 mb-4">
-        <span>📊 {course.difficulty_level}</span>
-        <span>⏱️ {course.estimated_time}</span>
-        <span>📚 {chapters?.length || 0} chapters</span>
+        <span>?? {course.difficulty_level}</span>
+        <span>?? {course.estimated_time}</span>
+        <span>?? {chapters?.length || 0} chapters</span>
       </div>
 
       <div className="mb-8">

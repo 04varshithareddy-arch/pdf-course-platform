@@ -1,4 +1,4 @@
-﻿import { supabase } from "@/lib/supabase";
+import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
 
@@ -57,7 +57,7 @@ export default async function DashboardPage() {
   return (
     <main className="min-h-screen max-w-3xl mx-auto p-8">
       <Link href="/" className="text-blue-600 hover:underline text-sm">
-        ← Back to home
+        ? Back to home
       </Link>
 
       <h1 className="text-3xl font-bold mt-4 mb-8">My Dashboard</h1>
@@ -84,9 +84,9 @@ export default async function DashboardPage() {
 
             <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
               <span>{course.difficulty_level}</span>
-              <span>•</span>
+              <span>�</span>
               <span>{course.total} lessons</span>
-              <span>•</span>
+              <span>�</span>
               <span>{course.completed}/{course.total} completed</span>
             </div>
 
