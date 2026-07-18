@@ -1,4 +1,4 @@
-import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
+ï»¿import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
 
@@ -83,10 +83,8 @@ export default async function DashboardPage() {
             <p className="text-sm text-gray-500 mb-3">{course.description}</p>
 
             <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
-              <span>{course.difficulty_level}</span>
-              <span>•</span>
-              <span>{course.total} lessons</span>
-              <span>•</span>
+              <span>ðŸ“Š {course.difficulty_level}</span>
+              <span>ðŸ“š {course.total} lessons</span>
               <span>{course.completed}/{course.total} completed</span>
             </div>
 
