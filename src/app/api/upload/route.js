@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import pdfParse from "pdf-parse/lib/pdf-parse.js";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { auth } from "@/lib/auth";
 
 export async function POST(request) {
