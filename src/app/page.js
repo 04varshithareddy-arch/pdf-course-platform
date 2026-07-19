@@ -147,7 +147,7 @@ export default function Home() {
           {result && (
             <div className="mt-8 max-w-xl border border-gray-300 rounded p-4">
               <p className="font-bold">
-                âœ… Upload successful!
+                Upload successful!
               </p>
 
               <p>Filename: {result.filename}</p>
@@ -168,7 +168,7 @@ export default function Home() {
           {courseResult && (
             <div className="mt-6 max-w-xl border border-purple-400 rounded p-4 bg-purple-50 text-black">
               <p className="font-bold">
-                ðŸŽ‰ Course generated!
+                Course generated!
               </p>
 
               <p className="mb-3">
