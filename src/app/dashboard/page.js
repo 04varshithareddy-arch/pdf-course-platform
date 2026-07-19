@@ -1,6 +1,7 @@
 ﻿import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
+import DashboardSearch from "./DashboardSearch";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -29,7 +30,7 @@ export default async function DashboardPage() {
 
   const { data: courses } = await supabase
     .from("courses")
-    .select("*, chapters(id, lessons(id))")
+    .select("*, chapters(id, title, lessons(id, title))")
     .eq("user_id", userRow.id)
     .order("created_at", { ascending: false });
 
@@ -57,7 +58,7 @@ export default async function DashboardPage() {
   return (
     <main className="min-h-screen max-w-3xl mx-auto p-8">
       <Link href="/" className="text-blue-600 hover:underline text-sm">
-        ? Back to home
+        Back to home
       </Link>
 
       <h1 className="text-3xl font-bold mt-4 mb-8">My Dashboard</h1>
@@ -72,31 +73,9 @@ export default async function DashboardPage() {
         </p>
       )}
 
-      <div className="space-y-4">
-        {coursesWithStats?.map((course) => (
-          <Link
-            key={course.id}
-            href={`/course/${course.id}`}
-            className="block border border-gray-300 rounded-lg p-5 hover:border-blue-400 transition"
-          >
-            <h2 className="text-lg font-semibold mb-1">{course.title}</h2>
-            <p className="text-sm text-gray-500 mb-3">{course.description}</p>
-
-            <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
-              <span>📊 {course.difficulty_level}</span>
-              <span>📚 {course.total} lessons</span>
-              <span>{course.completed}/{course.total} completed</span>
-            </div>
-
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-green-500 h-2 rounded-full"
-                style={{ width: `${course.percent}%` }}
-              ></div>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {coursesWithStats && coursesWithStats.length > 0 && (
+        <DashboardSearch courses={coursesWithStats} />
+      )}
     </main>
   );
 }
